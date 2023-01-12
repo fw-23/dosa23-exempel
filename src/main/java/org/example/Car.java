@@ -1,19 +1,37 @@
 package org.example;
 
-public class Car {
+public class Car extends Vehicle implements ShopFeatures {
 
-    // Instansvariabel
-    private String name;
+    private double price;
+    private double discount = 0.9;
+    private String salesPersonEmail;
 
-    // Konstruktormetod för klassen
     public Car(String name) {
-        // Vi initialiserar instanvarabeln name med metodarumentet name
-        this.name = name;
+        super(name);
+        this.price = 10000;
     }
-    public String getName() {:
-        return name;
+
+    // Överskuggning
+    @Override
+    public void soundWarning() {
+        System.out.println("Tut tut!");
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public void refuel() {
+        // adds fuel to car
     }
+    public double getPrice() {
+        return price*discount;
+    }
+
+    public String getSalesPersonEmail() {
+        return salesPersonEmail;
+    }
+    public void setSalesPersonEmail(String salesPersonEmail) {
+        if (!salesPersonEmail.contains("@")) {
+            // Validera email-adressen och kasta error om den inte är valid
+        }
+        this.salesPersonEmail = salesPersonEmail;
+    }
+
 }
