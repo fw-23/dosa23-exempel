@@ -13,6 +13,10 @@ public class Shirt extends Clothing implements ShopFeatures {
         this.price = price;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
