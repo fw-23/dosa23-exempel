@@ -10,11 +10,13 @@ public class Main {
         Scanner strInput = new Scanner(System.in);
         Scanner intInput = new Scanner(System.in);
 
+        Customer customer = new Customer(2000);
 
         // ArrayList
         BikeShop bikeShop = new BikeShop();
         bikeShop.addBike(new Bike("Kona", 500));
         bikeShop.addBike(new Bike("Bianchi", 700));
+        bikeShop.addBike(new Bike("Insera", -200));
         //System.out.println(bikeShop.getBikes());
         System.out.println("Våra cyklar:");
         for (int i = 0; i < bikeShop.getBikes().size(); i++) {
@@ -25,36 +27,26 @@ public class Main {
         }
 
         while (true) {
+            System.out.printf("Du har %.2f €\n", customer.getFunds());
             System.out.printf("Vilken cykel vill du köpa? (1-%d) ", bikeShop.getBikes().size());
 
             try {
-                String chosenBike = intInput.nextLine();
-                System.out.printf("Grattis, du äger nu en %s\n",
-                        bikeShop.getBike(Integer.parseInt(chosenBike) - 1).getName()
-                );
+                int userInput = Integer.parseInt(intInput.nextLine());
+                Bike chosenBike = bikeShop.getBike(userInput-1);
+                customer.buyBike(chosenBike);
+                System.out.printf("Grattis, du äger nu en %s\n", chosenBike.getName());
+                System.out.printf("Du har %.2f € kvar\n", customer.getFunds());
                 break;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("En sådan cykel finns inte, försök igen!");
             } catch (NumberFormatException e) {
                 System.out.println("Du måste ge ett heltal, försök igen!");
             } catch (Exception e) {
-                System.out.println("Någonting gick fel, försök igen!");
+                System.out.println(e.getMessage());
+                System.out.println("Försök igen!");
             }
         }
 
-
-
-        //CCRandomRundown.generator();
-
-
-        Random rnd = new Random();
-        System.out.printf("Slumptal 100-199: %d\n", rnd.nextInt(99)+100);
-
-
-        // Code Challenge "Testing Overload"
-        Calculator calc = new Calculator();
-        System.out.println(calc.multiply(2, 2));
-        System.out.println(calc.multiply(10, 20, 100));
 
     }
 }

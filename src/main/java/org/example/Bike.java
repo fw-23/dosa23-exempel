@@ -6,7 +6,7 @@ public class Bike extends Vehicle implements ShopFeatures {
     public Bike(String name, double price) {
         // vi anropar Vehicle-klassens konstruktor
         super(name);
-        this.price = price;
+        setPrice(price);
     }
 
     // Överskuggning
@@ -18,5 +18,10 @@ public class Bike extends Vehicle implements ShopFeatures {
     @Override
     public double getPrice() {
         return price;
+    }
+
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
