@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Random;
+
 public class Bike extends Vehicle implements ShopFeatures {
 
     double price;
@@ -24,4 +26,5 @@ public class Bike extends Vehicle implements ShopFeatures {
     public void setPrice(double price) {
         this.price = price;
     }
+
 }

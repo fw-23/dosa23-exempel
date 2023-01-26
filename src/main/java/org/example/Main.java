@@ -7,15 +7,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner strInput = new Scanner(System.in);
-        Scanner intInput = new Scanner(System.in);
 
         Customer customer = new Customer(2000);
 
+        // Code Challenge: Good input, Bad input
+        int myInt = Utils.getIntInput("Ge ett heltal: ");
+        System.out.printf("Du skrev: %d\n\n", myInt);
+
+
+        Scanner strInput = new Scanner(System.in);
+
+        // Användning av statisk utility-metod
+        System.out.println("Mata in ett heltal: ");
+        if (Utils.isInteger(strInput.nextLine())) {
+            System.out.println("Tack, det var ett heltal");
+        } else {
+            System.out.println("Det var inte ett heltal!");
+        }
+
+
         // ArrayList
         BikeShop bikeShop = new BikeShop();
-        bikeShop.addBike(new Bike("Kona", 500));
-        bikeShop.addBike(new Bike("Bianchi", 700));
+        bikeShop.addBike(BikeFactory.create("Kona"));
+        bikeShop.addBike(BikeFactory.create("Bianchi"));
         bikeShop.addBike(new Bike("Insera", -200));
         //System.out.println(bikeShop.getBikes());
         System.out.println("Våra cyklar:");
@@ -31,7 +45,7 @@ public class Main {
             System.out.printf("Vilken cykel vill du köpa? (1-%d) ", bikeShop.getBikes().size());
 
             try {
-                int userInput = Integer.parseInt(intInput.nextLine());
+                int userInput = Integer.parseInt(strInput.nextLine());
                 Bike chosenBike = bikeShop.getBike(userInput-1);
                 customer.buyBike(chosenBike);
                 System.out.printf("Grattis, du äger nu en %s\n", chosenBike.getName());
