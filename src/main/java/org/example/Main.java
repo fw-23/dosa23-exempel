@@ -1,45 +1,33 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Överlagring - overload
-        Shirt myShirt = new Shirt("Esprit");
-        myShirt.setPrice(25);
-        // Överlagring, samma metod med olika antal parametrar
-        Shirt anotherShirt = new Shirt("Dressman", 15);
-        System.out.printf("This shirt is %s\n", anotherShirt.getCondition());
+        // Object swapping example
+        // Alla objekt har superklassen som typ.
+        Vehicle myCar, myBike, todaysVehicle, tomorrowsVehicle, tempVehicle;
 
-        // Vi instansirar två Car-objekt
-        Car car = new Car("Toyota");
-        car.setSalesPersonEmail("arlige.knut@begnagnade-bilar.fi");
-        Bike myBike = new Bike("Scott");
+        myCar = new Car("Bil");
+        myBike = new Bike("Cykel");
 
-        // abstrakt klass kan inte instansieras, men nog fungera som typ
-        Clothing shirt = new Shirt("asd");
+        todaysVehicle = myBike;     // initialvärde Bike
+        tomorrowsVehicle = myCar;   // initialvärde Car
 
+        for (int i = 0; i < 4; i++) {  // (for-loop bara för exemplets skull)
 
+            System.out.printf("I dag åker jag %s, i morgon åker jag %s.\n",
+                    todaysVehicle.getName(),
+                    tomorrowsVehicle.getName());
 
-        // upcasting
-        Vehicle myRide = new Car("WV");
-        System.out.printf("I dag åker jag %s\n", myRide.getName());
-        myRide.soundWarning();
-        // Eftersom dagensFordon har typen Vehicle kan jag byta mellan Car och Bike.
-        myRide = new Bike("Nishiki");
-        System.out.printf("I morgon åker jag %s\n", myRide.getName());
-        myRide.soundWarning();
+            // SWAP
+            // Eftersom både Bike och Bil har samma superklass går det att swappa mellan dem
+            tempVehicle = todaysVehicle;        // Dagens sparas i temporär variabel
+            todaysVehicle = tomorrowsVehicle;   // Byt dagens till morgondagens
+            tomorrowsVehicle = tempVehicle;     // Sätt temporära värdet till morgondagens
 
+        }
 
-        car.soundWarning();
-        myBike.soundWarning();
-
-        System.out.println(car.getName());
-        System.out.println(myBike.getName());
-
-        System.out.printf("%s kostar %.2f, kontakta %s",
-                car.getName(),
-                car.getPrice(),
-                car.getSalesPersonEmail()
-        );
     }
 }
