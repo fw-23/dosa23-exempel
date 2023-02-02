@@ -25,14 +25,17 @@ public class Main {
         BikeShop bikeShop = new BikeShop();
         bikeShop.addBike(BikeFactory.create("Kona"));
         bikeShop.addBike(BikeFactory.create("Bianchi"));
-        bikeShop.addBike(new Bike("Insera", -200));
+        bikeShop.addBike(new Bike("Insera", 200, DiscountCategory.RETURNED));
+        bikeShop.addBike(new Bike("Scott", 700, DiscountCategory.DEMO));
         //System.out.println(bikeShop.getBikes());
         System.out.println("Våra cyklar:");
         for (int i = 0; i < bikeShop.getBikes().size(); i++) {
-            System.out.printf("%d: %s - %.2f\n",
+            System.out.printf("%d: %s - %.2f (%.2f - %s)\n",
                     i+1,
                     bikeShop.getBike(i).getName(),
-                    bikeShop.getBike(i).getPrice());
+                    bikeShop.getBike(i).getNetPrice(),
+                    bikeShop.getBike(i).getPrice(),
+                    bikeShop.getBike(i).getDiscountCategory());
         }
 
         while (true) {

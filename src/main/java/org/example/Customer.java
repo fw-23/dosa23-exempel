@@ -25,10 +25,12 @@ public class Customer implements Serializable {
     // metod som köper cykel, dvs minskar kundens
     // medel med cykelns pris
     public void buyBike(Bike bike) {
-        if (bike.getPrice() < 0) {
+        if (bike.getNetPrice() < 0) {
             throw new IllegalArgumentException("Cykelns pris måste vara positivt");
         }
-        setFunds(funds - bike.getPrice());
+        setFunds(funds - bike.getNetPrice());
         currentBike = bike;
     }
+
+
 }
