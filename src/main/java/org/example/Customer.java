@@ -2,6 +2,7 @@ package org.example;
 
 public class Customer {
     double funds;
+    Bike currentBike;
 
     public Customer(double funds) {
         this.funds = funds;
@@ -21,5 +22,6 @@ public class Customer {
             throw new IllegalArgumentException("Cykelns pris måste vara positivt");
         }
         setFunds(funds - bike.getPrice());
+        currentBike = bike;
     }
 }

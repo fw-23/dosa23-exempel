@@ -10,21 +10,9 @@ public class Main {
 
         Customer customer = new Customer(2000);
 
-        // Code Challenge: Good input, Bad input
-        int myInt = Utils.getIntInput("Ge ett heltal: ");
-        System.out.printf("Du skrev: %d\n\n", myInt);
-
-
         Scanner strInput = new Scanner(System.in);
 
-        // Användning av statisk utility-metod
-        System.out.println("Mata in ett heltal: ");
-        if (Utils.isInteger(strInput.nextLine())) {
-            System.out.println("Tack, det var ett heltal");
-        } else {
-            System.out.println("Det var inte ett heltal!");
-        }
-
+        FileUtils.writeTextFile("Hellöu file", "minfil.txt");
 
         // ArrayList
         BikeShop bikeShop = new BikeShop();
@@ -42,6 +30,7 @@ public class Main {
 
         while (true) {
             System.out.printf("Du har %.2f €\n", customer.getFunds());
+            System.out.println(FileUtils.readTextFile("mincykel.txt"));
             System.out.printf("Vilken cykel vill du köpa? (1-%d) ", bikeShop.getBikes().size());
 
             try {
@@ -50,6 +39,11 @@ public class Main {
                 customer.buyBike(chosenBike);
                 System.out.printf("Grattis, du äger nu en %s\n", chosenBike.getName());
                 System.out.printf("Du har %.2f € kvar\n", customer.getFunds());
+                FileUtils.writeTextFile(
+                        String.format("Förra gången köpte du en %s", chosenBike.getName()),
+                        "mincykel.txt"
+                );
+
                 break;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("En sådan cykel finns inte, försök igen!");
