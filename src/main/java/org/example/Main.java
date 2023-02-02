@@ -7,8 +7,15 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Customer customer;
 
-        Customer customer = new Customer(2000);
+        try {
+            customer = (Customer) FileUtils.loadObject("customer.save");
+        } catch (Exception e) {
+            System.out.println("Ingen save-fil hittades, skapar ny kund.");
+            customer = new Customer(2000);
+        }
+
 
         Scanner strInput = new Scanner(System.in);
 
@@ -37,10 +44,13 @@ public class Main {
                 int userInput = Integer.parseInt(strInput.nextLine());
                 Bike chosenBike = bikeShop.getBike(userInput-1);
                 customer.buyBike(chosenBike);
-                System.out.printf("Grattis, du äger nu en %s\n", chosenBike.getName());
+                System.out.printf("Grattis, du äger nu en %s\n", customer.getCurrentBike().getName());
                 System.out.printf("Du har %.2f € kvar\n", customer.getFunds());
+
+                FileUtils.saveObject(customer, "customer.save");
+
                 FileUtils.writeTextFile(
-                        String.format("Förra gången köpte du en %s", chosenBike.getName()),
+                        String.format("Förra gången köpte du en %s", customer.getCurrentBike().getName()),
                         "mincykel.txt"
                 );
 

@@ -1,6 +1,8 @@
 package org.example;
 
-public abstract class Vehicle {
+import java.io.Serializable;
+
+public abstract class Vehicle implements Serializable {
     String name;
     public Vehicle(String name) {
         this.name = name;

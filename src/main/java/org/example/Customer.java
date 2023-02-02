@@ -1,6 +1,8 @@
 package org.example;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     double funds;
     Bike currentBike;
 
@@ -15,6 +17,11 @@ public class Customer {
     public void setFunds(double funds) {
         this.funds = funds;
     }
+
+    public Bike getCurrentBike() {
+        return currentBike;
+    }
+
     // metod som köper cykel, dvs minskar kundens
     // medel med cykelns pris
     public void buyBike(Bike bike) {

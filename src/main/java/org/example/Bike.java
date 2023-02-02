@@ -1,8 +1,9 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Bike extends Vehicle implements ShopFeatures {
+public class Bike extends Vehicle implements ShopFeatures, Serializable {
 
     double price;
     public Bike(String name, double price) {
