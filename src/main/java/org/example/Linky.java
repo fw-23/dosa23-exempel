@@ -4,6 +4,10 @@ public class Linky {
     Node first;
     Node last;
 
+    // Inre klass!
+    // Static är inte nödvändigt, men gör det klarare eftersom
+    // själva Node-klassen kan vara gemensam för Linky,
+    // vi kan skapa flera Node-objekt ur den
     private static class Node {
         Person person;
         Node next;
