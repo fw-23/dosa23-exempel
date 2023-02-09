@@ -11,7 +11,7 @@ public class StringArray {
     }
 
     public void add(String value) {
-        // Skapa en ny array som är ett element längre än dne gamla
+        // Skapa en ny array som är ett element längre än den gamla
         String[] newValues = new String[values.length+1];
         for (int i = 0; i < values.length; i++) {
             newValues[i] = values[i];
@@ -34,6 +34,16 @@ public class StringArray {
 
     }
 
+    // CODE CHALLENGE The Reversal
+    public void reverse() {
+        String[] reversed = new String[values.length];
+        int revIndex = 0;
+        for (int i = values.length-1; i >= 0; i--) {
+            reversed[revIndex] = values[i];
+            revIndex++;
+        }
+        values = reversed;
+    }
 
 
     @Override
