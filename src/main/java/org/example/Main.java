@@ -10,13 +10,54 @@ public class Main {
         String[] dwarves = {"Fili", "Kili", "Balin", "Dwalin", "Ori", "Nori", "Dori", "Gloin", "Oin", "Bifur", "Bofur", "Bombur", "Thorin"};
 
 
+        Queuey queuey = new Queuey(5);
+        queuey.enQueue("A");
+        queuey.enQueue("B");
+        queuey.enQueue("C");
+        queuey.enQueue("D");
+        queuey.enQueue("E");
+        System.out.println(queuey.toString());
+        queuey.enQueue("F");
+        System.out.println(queuey.toString());
+        System.exit(0);
+
+        // Code Challenge
+        new CC_CircularArr();
+        System.exit(0);
+
+        Stacky stacky = new Stacky(3);
+        stacky.push(dwarves[2]);
+        System.out.println(stacky.toString());
+        stacky.push(dwarves[3]);
+        System.out.println(stacky.toString());
+        stacky.push(dwarves[4]);
+        System.out.println(stacky.toString());
+        //ERROR: stacky.push(dwarves[5]);
+
+        System.out.println("pop: " + stacky.pop());
+        System.out.println(stacky.toString());
+        System.out.println("pop: " + stacky.pop());
+        System.out.println(stacky.toString());
+        System.out.println("pop: " + stacky.pop());
+        // ERROR: System.out.println("pop: " + stacky.pop());
+
+
+        System.exit(0);
+
+
         Person person = new Person(dwarves[2]);
         System.out.println(person.getName());
 
         Linky linky = new Linky();
-        linky.add(new Person(dwarves[2]));
-        linky.add(new Person(dwarves[3]));
-        linky.add(new Person(dwarves[4]));
+        for (int i = 0; i < dwarves.length; i++) {
+            linky.add(new Person(dwarves[i]));
+        }
+
+        System.out.printf("Det finns %d noder i linky\n",
+                    linky.size()
+                );
+        System.out.println(linky.toString());
+
 
         System.exit(0);
 

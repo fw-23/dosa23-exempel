@@ -29,4 +29,27 @@ public class Linky {
         last = n;
     }
 
+    public int size() {
+        int size = 0;
+        Node n = first;
+        while (n != null) {
+            size++;
+            n = n.next;
+        }
+        return size;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder ret = new StringBuilder("Linky toString: ");
+        Node n = first;
+        while (n != null) {
+            ret.append(String.format("%s %s",
+                    n.person.getName(),
+                    (n != last) ? "-> " : "" // Ternary operator
+            ));
+            n = n.next;
+        }
+        return ret.toString();
+    }
 }
