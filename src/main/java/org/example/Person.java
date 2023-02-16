@@ -5,8 +5,16 @@ import java.util.Random;
 
 public class Person {
     private String name;
-    int age;
+    int age = 20;
     Random rnd = new Random();
+
+    int nameRank;
+
+    public Person(String name, int nameRank) {
+        this.name = name;
+        this.nameRank = nameRank;
+    }
+
     public Person(String name) {
         this.name = name;
         age = rnd.nextInt(100);
@@ -18,5 +26,9 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Object getRank() {
+        return nameRank;
     }
 }
