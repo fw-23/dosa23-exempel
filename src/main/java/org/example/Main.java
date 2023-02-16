@@ -24,13 +24,13 @@ public class Main {
         }
         //System.out.printf("TOTAL COLLISIONS: %d\n", hashy.totalCollisions);
 
-        System.out.println(hashy.search("Liam").getName());
+        System.out.println("Rank: "+ hashy.search("Liam").getRank());
         hashy.searchNotHash("Liam", topMaleNames);
-        System.out.println(hashy.search("Donald").getName());
+        System.out.println("Rank: "+ hashy.search("Donald").getRank());
         hashy.searchNotHash("Donald", topMaleNames);
-        System.out.println(hashy.search("John").getName());
+        System.out.println("Rank: "+ hashy.search("John").getRank());
         hashy.searchNotHash("John", topMaleNames);
-        System.out.println(hashy.search("Bishop").getName());
+        System.out.println("Rank: "+ hashy.search("Bishop").getRank());
         hashy.searchNotHash("Bishop", topMaleNames);
 
         System.exit(0);

@@ -23,7 +23,6 @@ public class Hashy {
         return ret % size;
     }
 
-
     public void insert(Person person) {
 
         int idx = hash(person.getName());
