@@ -12,11 +12,10 @@ public class Person implements Comparable<Person> {
     public Person(String name, int nameRank) {
         this.name = name;
         this.nameRank = nameRank;
-    }
-
-    public Person(String name) {
-        this.name = name;
         age = rnd.nextInt(100);
+    }
+    public Person(String name) {
+        this(name, 0);
     }
 
     public String getName() {
@@ -27,8 +26,12 @@ public class Person implements Comparable<Person> {
         this.name = name;
     }
 
-    public Object getRank() {
+    public int getRank() {
         return nameRank;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     @Override
@@ -36,5 +39,8 @@ public class Person implements Comparable<Person> {
         // vi ska sortera enligt namn
         // jämför this.namn med otherPerson's name
         return name.compareTo(otherPerson.getName());
+
+        // Om vi vill jämföra enligt heltalsfältet:
+        //return age - otherPerson.getAge();
     }
 }
